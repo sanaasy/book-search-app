@@ -8,12 +8,7 @@ const HomePage = () => {
 	
 	return (
 		<View>
-			<Text marginLeft="m" marginTop="l" variant="header">
-				Recently viewed
-			</Text>
-			<Text marginLeft="m" marginTop="l" variant="header">
-				Wishlist
-			</Text>
+			
 		</View>
 	);
 };

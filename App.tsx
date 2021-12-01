@@ -1,14 +1,18 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
-import HomePage from "./src/components/HomePage/HomePage";
+import { StatusBar, StyleSheet, View } from "react-native";
 import { ThemeProvider } from "@shopify/restyle";
 import theme from "./src/components/styles/theme";
+
+import HomePage from "./src/components/HomePage/HomePage";
+import BookDetails from "./src/components/BookDetails/BookDetails";
 
 export default function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<View style={styles.container}>
+				<StatusBar />
 				<HomePage />
+				{/* <BookDetails  */}
 			</View>
 		</ThemeProvider>
 	);
@@ -17,7 +21,7 @@ export default function App() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		justifyContent: "center",
-		backgroundColor: "#ECF0F1",
+		marginTop: 60,
+		// justifyContent: "center",
 	},
 });
