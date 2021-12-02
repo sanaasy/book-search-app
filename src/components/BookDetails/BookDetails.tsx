@@ -1,9 +1,10 @@
 import React from "react";
 import { View, Image } from "react-native";
-import Text from "../styles/Text";
+import {Text, Box} from "../styles";
 import getTheme from "../styles/getTheme";
 
-interface BookProps {
+export interface BookProps {
+	id: string
 	title: string
 	author: string 
 	pages: string 
@@ -13,13 +14,15 @@ interface BookProps {
 	thumbnail: string  
 }
 
-const BookDetails = ({title, author, pages, rating, description, authorImg, thumbnail}: BookProps) => {
+const BookDetails = ({id, title, author, pages, rating, description, authorImg, thumbnail}: BookProps) => {
 	const theme = getTheme();
 	
 	return (
-		<View>
-			<Image style={{width: 200, height: 250}} source={{uri: thumbnail}} resizeMode="contain" />
-			<Text>{title}</Text>
+		<View >
+			<Box style={{justifyContent: "center", alignItems: "center"}}>
+				<Image style={{width: 200, height: 250}} source={{uri: thumbnail}} resizeMode="contain" />
+				<Text>{title}</Text>
+			</Box>
 			<Text>{pages}</Text>
 			<Text>{rating}</Text>
 			<Image style={{width: 50, height: 50}} source={{uri: authorImg}} resizeMode="contain" />

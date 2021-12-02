@@ -1,5 +1,6 @@
 const data = [
 	{
+		id: '1',
 		title: "Dear Evan Hansen",
 		author: "Val Emmich",
 		pages: "368",
@@ -9,6 +10,7 @@ const data = [
 		thumbnail: "https://upload.wikimedia.org/wikipedia/en/9/91/DearEvanposter.png"
 	},
 	{
+		id: '2',
 		title: "Dear Evan Hansen",
 		author: "Val Emmich",
 		pages: "368",
@@ -18,6 +20,7 @@ const data = [
 		thumbnail: "https://upload.wikimedia.org/wikipedia/en/9/91/DearEvanposter.png"
 	},
 	{
+		id: '3',
 		title: "Dear Evan Hansen",
 		author: "Val Emmich",
 		pages: "368",
@@ -27,6 +30,7 @@ const data = [
 		thumbnail: "https://upload.wikimedia.org/wikipedia/en/9/91/DearEvanposter.png"
 	},
 	{
+		id: '4',
 		title: "Dear Evan Hansen",
 		author: "Val Emmich",
 		pages: "368",
@@ -36,6 +40,7 @@ const data = [
 		thumbnail: "https://upload.wikimedia.org/wikipedia/en/9/91/DearEvanposter.png"
 	},
 	{
+		id: '5',
 		title: "Dear Evan Hansen",
 		author: "Val Emmich",
 		pages: "368",

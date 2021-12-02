@@ -1,49 +1,57 @@
-import React from "react";
-import { View , Pressable } from "react-native";
+import React, { useCallback } from "react";
+import { View, TouchableOpacity, FlatList, Platform } from "react-native";
+import { Header } from "react-native-elements";
 import Text from "../styles/Text";
 import getTheme from "../styles/getTheme";
+import { BookProps } from "../BookDetails/BookDetails";
 
-import Animated, {
-  interpolate, Extrapolate, withTiming, useSharedValue, useAnimatedScrollHandler, useAnimatedStyle,
-} from 'react-native-reanimated';
+import Animated, { useSharedValue, useAnimatedScrollHandler } from "react-native-reanimated";
 
-import data from '../../../assets/data'
-import BookDetails from "../BookDetails/BookDetails";
+import data from "../../../assets/data";
+import Book from "../Book/Book";
+import { Box } from "../styles";
+
+const HEADER_HEIGHT = Platform.OS === "ios" ? 44 : 56;
 
 const HomePage = () => {
 	const theme = getTheme();
-	 const scrollY = useSharedValue(0);
+	const scrollY = useSharedValue(0);
 
 	const scrollHandler = useAnimatedScrollHandler((event) => {
-    scrollY.value = event.contentOffset.y;
-  });
-	
+		scrollY.value = event.contentOffset.y;
+	});
+
+	// const renderItem = useCallback(({book}: {book: BookProps}) => {
+	const renderItem = useCallback(({ item, index }: { item: BookProps; index: number }) => {
+		return (
+			<Box>
+				<TouchableOpacity key={index} onPress={() => {}} style={{ marginRight: theme.spacing.m }}>
+					<Book {...item} />
+				</TouchableOpacity>
+			</Box>
+		);
+	}, []);
+
+	const renderHeader = () => {
+		return (
+			<Header
+				centerComponent={{ text: "Wishlist", style: { color: "#fff" } }}
+			/>
+		);
+	};
+
 	return (
-		<View>
-			<Text marginLeft="m" marginTop="l" variant="header">
-				Recently viewed
-			</Text>
-			<Text marginLeft="m" marginTop="l" variant="header">
-				Wishlist
-			</Text>
-			{/* <Animated.ScrollView
-        onScroll={scrollHandler}
-        scrollEventThrottle={1}
-        keyboardDismissMode="on-drag"
-        keyboardShouldPersistTaps="handled"
-        // contentContainerStyle={styles.scrollContainer}
-        // style={anims.scrollView}
-      >
-				{data.map((book) => {
-					<Pressable 
-						key="1"
-						onPress={() => {}}
-					>
-						<BookDetails {...book} />
-					</Pressable>
-				})}
-      </Animated.ScrollView> */}
-		</View>
+		<FlatList
+			keyExtractor={(item: BookProps) => item.id}
+			data={data}
+			renderItem={renderItem}
+			horizontal
+			showsHorizontalScrollIndicator={false}
+			style={{
+				marginLeft: theme.spacing.m,
+			}}
+			// ListHeaderComponent={renderHeader}
+		/>
 	);
 };
 

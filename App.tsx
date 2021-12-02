@@ -10,14 +10,14 @@ import data from "./assets/data";
 
 export default function App() {
 
-	const dataOne = data[0]
+	// const dataOne = data[0]
 
 	return (
 		<ThemeProvider theme={theme}>
 			<View style={styles.container}>
 				<StatusBar />
 				<HomePage />
-				<BookDetails {...dataOne} />
+				{/* <BookDetails {...dataOne} /> */}
 			</View>
 		</ThemeProvider>
 	);
