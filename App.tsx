@@ -6,13 +6,18 @@ import theme from "./src/components/styles/theme";
 import HomePage from "./src/components/HomePage/HomePage";
 import BookDetails from "./src/components/BookDetails/BookDetails";
 
+import data from "./assets/data";
+
 export default function App() {
+
+	const dataOne = data[0]
+
 	return (
 		<ThemeProvider theme={theme}>
 			<View style={styles.container}>
 				<StatusBar />
 				<HomePage />
-				{/* <BookDetails  */}
+				<BookDetails {...dataOne} />
 			</View>
 		</ThemeProvider>
 	);

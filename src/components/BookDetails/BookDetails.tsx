@@ -18,11 +18,11 @@ const BookDetails = ({title, author, pages, rating, description, authorImg, thum
 	
 	return (
 		<View>
-			<Image source={{uri: thumbnail}} />
+			<Image style={{width: 200, height: 250}} source={{uri: thumbnail}} resizeMode="contain" />
 			<Text>{title}</Text>
 			<Text>{pages}</Text>
 			<Text>{rating}</Text>
-			<Image source={{uri: authorImg}} />
+			<Image style={{width: 50, height: 50}} source={{uri: authorImg}} resizeMode="contain" />
 			<Text>{author}</Text>
 			<Text>{description}</Text>
 		</View>
