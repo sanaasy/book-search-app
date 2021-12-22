@@ -6,16 +6,22 @@ import { BookProps } from "../BookDetails/BookDetails";
 import data from "../../../assets/data/data";
 import Book from "../Book/Book";
 import { Box, Text, Header } from "../styles";
+import { SharedElement, SharedElementTransition, nodeFromRef } from "react-native-shared-element";
 
 const HEADER_HEIGHT = Platform.OS === "ios" ? 44 : 56;
 
+// const HomePage = ({ navigation }) => {
 const HomePage = () => {
 	const theme = getTheme();
 
 	const renderItem = useCallback(({ item, index }: { item: BookProps; index: number }) => {
 		return (
-			<Box>
-				<TouchableOpacity key={index} onPress={() => {}} style={{ marginRight: theme.spacing.m }}>
+			<Box marginRight="m">
+				<TouchableOpacity
+					key={index}
+					// onPress={() => navigation.navigate("Details", { ...item })}
+					onPress={() => {}}
+				>
 					<Book {...item} />
 				</TouchableOpacity>
 			</Box>

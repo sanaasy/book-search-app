@@ -7,7 +7,6 @@ import getTheme from "../styles/getTheme";
 const BookDetails = (book: BookProps) => {
 	const theme = getTheme();
 
-
 	return (
 		<Box style={{ justifyContent: "center", alignItems: "center" }}>
 			<Image style={{ width: 200, height: 250 }} source={{ uri: book.thumbnail }} resizeMode="contain" />
