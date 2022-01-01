@@ -53,6 +53,11 @@ const theme = createTheme({
       lineHeight: 24,
       color: 'black',
     },
+    caption: {
+      fontFamily: 'System',
+      fontSize: 12,
+      color: 'black'
+    }
   },
 });
 

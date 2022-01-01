@@ -9,12 +9,12 @@ const Book = (book: BookProps) => {
 	const theme = getTheme();
 
 	return (
-		<Box style={{ justifyContent: "center", alignItems: "center" }}>
+		<>
 			<SharedElement id={book.id}>
 				<Image style={{ width: 200, height: 250 }} source={{ uri: book.thumbnail }} resizeMode="contain" />
 			</SharedElement>
-			<Text textAlign="center">{book.title}</Text>
-		</Box>
+			<Text textAlign="center" variant="caption" margin="xs">{book.title}</Text>
+		</>
 	);
 };
 
