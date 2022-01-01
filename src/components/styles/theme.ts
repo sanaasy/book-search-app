@@ -4,13 +4,15 @@ const palette = {
   beige: '#DDBEA9',
   black: '#0B0B0B',
   white: '#F0F2F3',
+  light: '#e5e5e5',
 };
 
 const theme = createTheme({
   colors: {
     mainBackground: palette.white,
     cardPrimaryBackground: palette.beige,
-    black: palette.black
+    black: palette.black,
+    details: palette.light
   },
   spacing: {
     xs: 4,
@@ -36,6 +38,13 @@ const theme = createTheme({
       fontWeight: '600',
       fontSize: 24,
       lineHeight: 36,
+      color: 'black',
+    },
+    title: {
+      fontFamily: 'ShopifySans',
+      fontSize: 16,
+      fontWeight: 'bold',
+      lineHeight: 24,
       color: 'black',
     },
     body: {

@@ -13,7 +13,7 @@ const Book = (book: BookProps) => {
 			<SharedElement id={book.id}>
 				<Image style={{ width: 200, height: 250 }} source={{ uri: book.thumbnail }} resizeMode="contain" />
 			</SharedElement>
-			<Text style={{ textAlign: "center" }}>{book.title}</Text>
+			<Text textAlign="center">{book.title}</Text>
 		</Box>
 	);
 };

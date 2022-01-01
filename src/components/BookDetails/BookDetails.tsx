@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
-import { StyleSheet, Image } from "react-native";
+import { StyleSheet, Image, ScrollView } from "react-native";
 import { Text, Box } from "../styles";
 import getTheme from "../styles/getTheme";
 import { SharedElement } from "react-navigation-shared-element";
-import { SimpleLineIcons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as Animatable from "react-native-animatable";
 
 export interface BookProps {
@@ -24,43 +24,80 @@ const BookDetails = ({ route, navigation }) => {
 	const { id, title, author, pages, rating, description, authorImg, thumbnail }: BookProps = route.params.item;
 
 	return (
-		<>
-			<Box style={{ justifyContent: "center", alignItems: "center" }}>
-				<SharedElement id={id}>
-					<Image style={{ width: 400, height: 250 }} source={{ uri: thumbnail }} resizeMode="cover" />
-				</SharedElement>
-				<Text style={{ textAlign: "center" }}>{title}</Text>
-			</Box>
-			<Animatable.View
-				ref={buttonRef}
-				animation="fadeIn"
-				duration={600}
-				delay={300}
-				style={[StyleSheet.absoluteFillObject]}
-			>
-				<MaterialCommunityIcons
-					name="close"
-					size={28}
-					color="#fff"
-					style={{
-						position: "absolute",
-						top: 40,
-						right: 20,
-						zIndex: 2,
-					}}
-					onPress={() => {
-						buttonRef.current.fadeOut(100).then(() => {
+		<ScrollView>
+			<Box marginHorizontal="m">
+				<Box style={{ justifyContent: "center", alignItems: "center" }}>
+					<SharedElement id={id}>
+						<Image style={{ width: 400, height: 300 }} source={{ uri: thumbnail }} resizeMode="cover" />
+					</SharedElement>
+					<Text textAlign="center" fontWeight="bold" fontSize={24} margin="s">
+						{title}
+					</Text>
+				</Box>
+
+				<Animatable.View animation="fadeIn" duration={600} delay={300} style={[StyleSheet.absoluteFillObject]}>
+					<MaterialCommunityIcons
+						name="close"
+						size={32}
+						color="#fff"
+						style={{
+							position: "absolute",
+							top: 40,
+							right: 20,
+							zIndex: 2,
+						}}
+						onPress={() => {
 							navigation.goBack();
-						});
+						}}
+					/>
+				</Animatable.View>
+
+				<Box
+					style={{
+						paddingTop: theme.spacing.xs,
+						paddingBottom: theme.spacing.xs,
+						borderRadius: 10,
+						flexDirection: "row",
+						marginHorizontal: theme.spacing.xs,
+						backgroundColor: theme.colors.details,
 					}}
-				/>
-			</Animatable.View>
-			<Text>{pages}</Text>
-			<Text>{rating}</Text>
-			<Image style={{ width: 50, height: 50 }} source={{ uri: authorImg }} resizeMode="contain" />
-			<Text>{author}</Text>
-			<Text>{description}</Text>
-		</>
+				>
+					<Box style={{ flex: 1, paddingVertical: theme.spacing.xs }}>
+						<Text textAlign="center" fontSize={13}>
+							RATING
+						</Text>
+						<Text fontWeight="bold" style={{ fontSize: 15, textAlign: "center", marginTop: theme.spacing.xs }}>
+							{rating}
+						</Text>
+					</Box>
+					<Box style={{ flex: 1, paddingVertical: theme.spacing.xs, borderLeftWidth: 1, borderColor: "#00000011" }}>
+						<Text textAlign="center" fontSize={13}>
+							PAGES
+						</Text>
+						<Text fontWeight="bold" style={{ fontSize: 15, textAlign: "center", marginTop: theme.spacing.xs }}>
+							{pages}
+						</Text>
+					</Box>
+				</Box>
+
+				<Box
+					style={{
+						marginTop: theme.spacing.xs,
+						flexDirection: "row",
+						alignItems: "center",
+						marginHorizontal: theme.spacing.xs,
+					}}
+				>
+					<Image
+						source={{ uri: authorImg }}
+						style={{ width: 50, height: 50, borderRadius: 50, marginRight: theme.spacing.s }}
+					/>
+					<Text variant="title">{author}</Text>
+				</Box>
+
+				<Text variant="body">{description}</Text>
+			</Box>
+		</ScrollView>
 	);
 };
 
