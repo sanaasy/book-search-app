@@ -10,10 +10,14 @@ const Book = (book: BookProps) => {
 
 	return (
 		<>
-			<SharedElement id={book.id}>
+			<SharedElement id={`${book.id}.image`}>
 				<Image style={{ width: 200, height: 250 }} source={{ uri: book.thumbnail }} resizeMode="contain" />
 			</SharedElement>
-			<Text textAlign="center" variant="caption" margin="xs">{book.title}</Text>
+			<SharedElement id={`${book.id}.title`}>
+				<Text textAlign="center" variant="caption" margin="xs">
+					{book.title}
+				</Text>
+			</SharedElement>
 		</>
 	);
 };

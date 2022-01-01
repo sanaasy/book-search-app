@@ -27,12 +27,14 @@ const BookDetails = ({ route, navigation }) => {
 		<ScrollView>
 			<Box marginHorizontal="s">
 				<Box style={{ justifyContent: "center", alignItems: "center" }}>
-					<SharedElement id={id}>
+					<SharedElement id={`${id}.image`}>
 						<Image style={{ width: 400, height: 300 }} source={{ uri: thumbnail }} resizeMode="cover" />
 					</SharedElement>
+					{/* <SharedElement id={`${id}.title`}> */}
 					<Text textAlign="center" fontWeight="bold" fontSize={24} margin="s">
 						{title}
 					</Text>
+					{/* </SharedElement> */}
 				</Box>
 
 				<Animatable.View animation="fadeIn" duration={600} delay={300} style={[StyleSheet.absoluteFillObject]}>
@@ -93,8 +95,11 @@ const BookDetails = ({ route, navigation }) => {
 					/>
 					<Text variant="title">{author}</Text>
 				</Box>
-
-				<Text variant="body" margin="s">{description}</Text>
+				<SharedElement id={`${id}.description`}>
+					<Text variant="body" margin="s">
+						{description}
+					</Text>
+				</SharedElement>
 			</Box>
 		</ScrollView>
 	);
@@ -104,7 +109,17 @@ BookDetails.sharedElements = (route) => {
 	const { id } = route.params.item;
 	return [
 		{
-			id: id,
+			id: `${id}.image`,
+			animation: "move",
+			resize: "clip",
+		},
+		{
+			id: `${id}.title`,
+			animation: "move",
+			resize: "clip",
+		},
+		{
+			id: `${id}.description`,
 			animation: "move",
 			resize: "clip",
 		},

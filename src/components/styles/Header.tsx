@@ -1,7 +1,7 @@
 import React from "react";
-import { View, Image } from "react-native";
-import { BookProps } from "../BookDetails/BookDetails";
-import { Text, Box } from "../styles";
+import { StyleSheet, Image, TouchableOpacity } from "react-native";
+import Text from "./Text";
+import Box from "./Box";
 import getTheme from "../styles/getTheme";
 import { IconName } from "./Icon";
 
@@ -11,18 +11,38 @@ interface HeaderProps {
 		name: string;
 		onPress: () => void;
 	};
-	leftAction?: IconName
+	leftAction?: IconName;
 }
 
 const Header = ({ title, rightAction, leftAction }: HeaderProps) => {
 	const theme = getTheme();
 
 	return (
-		<Box style={{backgroundColor: theme.colors.mainBackground}}>
-      {leftAction && <Image style={{width: 50, height: 50}} source={{uri: leftAction}} /> }
+		<Box
+			style={{
+				marginTop: theme.spacing.s,
+				flexDirection: "row",
+				alignItems: "center",
+			}}
+		>
+			{leftAction && (
+				<Image style={{ width: 50, height: 50, borderColor: "black", borderWidth: 1 }} source={{ uri: leftAction }} />
+			)}
 			<Text variant="header" margin="m">
 				{title}
 			</Text>
+			{rightAction && (
+				<TouchableOpacity
+					onPress={rightAction.onPress}
+					style={{
+						flex: 1,
+						marginHorizontal: theme.spacing.m,
+						alignItems: "flex-end",
+					}}
+				>
+					<Text>{rightAction.name}</Text>
+				</TouchableOpacity>
+			)}
 		</Box>
 	);
 };
