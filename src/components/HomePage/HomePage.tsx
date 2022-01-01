@@ -1,26 +1,27 @@
 import React, { useCallback } from "react";
-import { View, TouchableOpacity, FlatList, Platform } from "react-native";
+import { TouchableOpacity, FlatList, Platform, Image } from "react-native";
 import getTheme from "../styles/getTheme";
 import { BookProps } from "../BookDetails/BookDetails";
 
 import data from "../../../assets/data/data";
 import Book from "../Book/Book";
-import { Box, Text, Header } from "../styles";
-import { SharedElement, SharedElementTransition, nodeFromRef } from "react-native-shared-element";
+import { Box, Header, Text } from "../styles";
+import { SharedElement } from "react-navigation-shared-element";
+import { ThemeContext } from "@shopify/restyle";
 
 const HEADER_HEIGHT = Platform.OS === "ios" ? 44 : 56;
 
-// const HomePage = ({ navigation }) => {
-const HomePage = () => {
+const HomePage = ({ navigation }) => {
+	// const HomePage = () => {
 	const theme = getTheme();
 
-	const renderItem = useCallback(({ item, index }: { item: BookProps; index: number }) => {
+	const renderItem = useCallback(({ item }: { item: BookProps }) => {
 		return (
-			<Box marginRight="m">
+			<Box marginRight="m" key={item.id}>
 				<TouchableOpacity
-					key={index}
-					// onPress={() => navigation.navigate("Details", { ...item })}
-					onPress={() => {}}
+					activeOpacity={0.8}
+					style={{ marginBottom: 14 }}
+					onPress={() => navigation.navigate("Details", { item })}
 				>
 					<Book {...item} />
 				</TouchableOpacity>
@@ -30,6 +31,18 @@ const HomePage = () => {
 
 	return (
 		<>
+			<Text
+				style={{
+					textAlign: "center",
+					fontSize: 30,
+					fontWeight: "bold",
+					paddingTop: 60,
+					paddingBottom: 20,
+					backgroundColor: theme.colors.cardPrimaryBackground,
+				}}
+			>
+				HOME
+			</Text>
 			<Header title="Wishlist" />
 			<FlatList
 				keyExtractor={(item: BookProps) => item.id}

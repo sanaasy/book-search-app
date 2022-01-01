@@ -18,7 +18,7 @@ const Header = ({ title, rightAction, leftAction }: HeaderProps) => {
 	const theme = getTheme();
 
 	return (
-		<Box>
+		<Box style={{backgroundColor: theme.colors.mainBackground}}>
       {leftAction && <Image style={{width: 50, height: 50}} source={{uri: leftAction}} /> }
 			<Text variant="header" margin="m">
 				{title}
