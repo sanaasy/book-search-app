@@ -25,7 +25,7 @@ const BookDetails = ({ route, navigation }) => {
 
 	return (
 		<ScrollView>
-			<Box marginHorizontal="m">
+			<Box marginHorizontal="s">
 				<Box style={{ justifyContent: "center", alignItems: "center" }}>
 					<SharedElement id={id}>
 						<Image style={{ width: 400, height: 300 }} source={{ uri: thumbnail }} resizeMode="cover" />
@@ -82,20 +82,19 @@ const BookDetails = ({ route, navigation }) => {
 
 				<Box
 					style={{
-						marginTop: theme.spacing.xs,
+						marginTop: theme.spacing.s,
 						flexDirection: "row",
 						alignItems: "center",
-						marginHorizontal: theme.spacing.xs,
 					}}
 				>
 					<Image
 						source={{ uri: authorImg }}
-						style={{ width: 50, height: 50, borderRadius: 50, marginRight: theme.spacing.s }}
+						style={{ width: 50, height: 50, borderRadius: 50, margin: theme.spacing.s }}
 					/>
 					<Text variant="title">{author}</Text>
 				</Box>
 
-				<Text variant="body">{description}</Text>
+				<Text variant="body" margin="s">{description}</Text>
 			</Box>
 		</ScrollView>
 	);

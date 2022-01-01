@@ -41,14 +41,14 @@ const theme = createTheme({
       color: 'black',
     },
     title: {
-      fontFamily: 'ShopifySans',
+      fontFamily: 'System',
       fontSize: 16,
       fontWeight: 'bold',
       lineHeight: 24,
       color: 'black',
     },
     body: {
-      fontFamily: 'ShopifySans',
+      fontFamily: 'Avenir',
       fontSize: 16,
       lineHeight: 24,
       color: 'black',
